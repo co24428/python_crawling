@@ -27,20 +27,4 @@ for i in data1:
     like_food = i['foods']['likes'][0]
     dislike_food = i['foods']['dislikes'][0]
     print(tmp_json %(name, species, like_food, dislike_food))
-    
-# docker run --name mongodb -d -p 32766:27017 mongo -auth
 
-
-
-# for i in data1:
-#     # print(data1[i])
-#     for one in data1[i]:
-#         sql = """
-#         INSERT INTO MEMBER(ID,PW,NAME,AGE,JOINDATE)
-#         VALUES(:ID, 'PASSWORD', :NAME, :AGE, SYSDATE)
-#         """
-#         cursor.execute(sql, one)
-#         print(one)
-
-
-# conn.commit()
