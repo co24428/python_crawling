@@ -18,6 +18,8 @@ sisul = list()
 cctv_is = list()
 cctv_num = list()
 road = list()
+bigaddr = list()
+smalladdr = list()
 
 for line in rdr:
     dict1 = dict()    
@@ -26,32 +28,40 @@ for line in rdr:
             val = "0"
         dict1[column[idx]] = val
     # print(dict1)
+    addr = dict1["소재지도로명주소"].split(" ")
+    # print(addr)
     sisul.append(dict1["시설종류"])
     cctv_is.append(dict1["CCTV설치여부"])
     cctv_num.append(dict1["CCTV설치대수"])
     road.append(dict1["보호구역도로폭"])
+    bigaddr.append(addr[0])
+    smalladdr.append(addr[1])
+
+print(bigaddr)
+print(smalladdr)
 
 
-print("시설종류 : "); print(sisul)
-print("CCTV설치여부 : "); print(cctv_is)
-print("CCTV설치대수 : "); print(cctv_num)
-print("보호구역도로폭 : "); print(road)
 
-print("="*50)
+# print("시설종류 : "); print(sisul)
+# print("CCTV설치여부 : "); print(cctv_is)
+# print("CCTV설치대수 : "); print(cctv_num)
+# print("보호구역도로폭 : "); print(road)
 
-print("전체     : " + str(len(sisul)))
-print("유치원   : " + str(sisul.count("유치원")))
-print("어린이집 : " + str(sisul.count("어린이집")))
-print("초등학교 : " + str(sisul.count("초등학교")))
-print("특수학교 : " + str(sisul.count("특수학교")))
+# print("="*50)
 
-print("="*50)
+# print("전체     : " + str(len(sisul)))
+# print("유치원   : " + str(sisul.count("유치원")))
+# print("어린이집 : " + str(sisul.count("어린이집")))
+# print("초등학교 : " + str(sisul.count("초등학교")))
+# print("특수학교 : " + str(sisul.count("특수학교")))
 
-print("전체 : " + str(len(cctv_is)))
-print("Y    : " + str(sisul.count("Y")))
-print("N    : " + str(sisul.count("N")))
+# print("="*50)
 
-print("="*50)
+# print("전체 : " + str(len(cctv_is)))
+# print("Y    : " + str(sisul.count("Y")))
+# print("N    : " + str(sisul.count("N")))
+
+# print("="*50)
 
     # coll.insert_one(dict1)
 # conn.close()
