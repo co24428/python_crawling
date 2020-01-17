@@ -37,15 +37,15 @@ for line in rdr:
     bigaddr.append(addr[0])
     smalladdr.append(addr[1])
 
-print(bigaddr)
-print(smalladdr)
 
 
 
-# print("시설종류 : "); print(sisul)
-# print("CCTV설치여부 : "); print(cctv_is)
-# print("CCTV설치대수 : "); print(cctv_num)
-# print("보호구역도로폭 : "); print(road)
+print("시설종류 : "); print(sisul)
+print("CCTV설치여부 : "); print(cctv_is)
+print("CCTV설치대수 : "); print(cctv_num)
+print("보호구역도로폭 : "); print(road)
+print("큰 주소 : "); print(bigaddr)
+print("작은 주소 : "); print(smalladdr)
 
 # print("="*50)
 
