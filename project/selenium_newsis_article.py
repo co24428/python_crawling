@@ -12,7 +12,10 @@ options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)
 
 driver = webdriver.Chrome("C:\\Users\\admin\\Desktop\\python_crawling\\python_crawling\\chromedriver.exe", chrome_options=options)
 
-url = "http://www.newsis.com/search/?val=%25EC%2596%25B4%25EB%25A6%25B0%25EC%259D%25B4%25EB%25B3%25B4%25ED%2598%25B8%25EA%25B5%25AC%25EC%2597%25AD&sort=acc&jo=sub&bun=all_bun&sdate=&term=allday&edate=&s_yn=Y&catg=0&t=0&page=1&"
+# 1페이지 - 6개만
+# url = "http://www.newsis.com/search/?val=%25EC%2596%25B4%25EB%25A6%25B0%25EC%259D%25B4%25EB%25B3%25B4%25ED%2598%25B8%25EA%25B5%25AC%25EC%2597%25AD&sort=acc&jo=sub&bun=all_bun&sdate=&term=allday&edate=&s_yn=Y&catg=0&t=0&page=1&"
+# 추가 - 20개 
+url = "http://www.newsis.com/search/schlist/?val=%25EC%2596%25B4%25EB%25A6%25B0%25EC%259D%25B4%25EB%25B3%25B4%25ED%2598%25B8%25EA%25B5%25AC%25EC%2597%25AD&sort=acc&jo=sub&bun=all_bun&sdate=&term=allday&edate=&s_yn=Y&catg=1&t=1&page=1&"
 driver.get(url)
 
 print("start")
@@ -28,13 +31,6 @@ for tmp in article:
     title.append(tmp.find_element_by_tag_name("a").text)
     link.append(tmp.find_element_by_tag_name("a").get_attribute("href"))
     date.append(tmp.find_element_by_class_name('date').text)
-    # tmp.find_element_by_tag_name("a").click()
-    # print("click")
-    # time.sleep(3)
-    # driver.execute_script("window.history.go(-1)")
-    # print("sleep")
-    # time.sleep(3)
-    
 
 print("="*50)
 print("title")
@@ -57,10 +53,17 @@ for i in link:
     time.sleep(1)
     tmp = driver.find_element_by_xpath('//*[@id="textBody"]')
     img_table = tmp.find_element_by_tag_name('table')
-    file = img_table.find_element_by_tag_name('img').get_attribute("src")
-    urllib.request.urlretrieve(file, "./python_crawling/img/newsis"+ str(idx) +".png")
-    print("image save!!")
-    idx += 1
+    try:
+        file = img_table.find_element_by_tag_name('img').get_attribute("src")
+        path = "C:\\Users\\admin\\Desktop\\python_crawling\\python_crawling\\project\\newsis_article\\"
+        file_name = "newsis" + str(idx) + ".png"
+        urllib.request.urlretrieve(file, path + file_name)
+        print("image save!!")
+        idx += 1
+    except Exception as e:
+        idx += 1
+        continue
+
 
 
 
